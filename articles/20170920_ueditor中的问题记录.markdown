@@ -1,0 +1,62 @@
+### 1. video插入视频后src被清空
+参考地址:https://github.com/fex-team/ueditor/pull/2957/commits/d4b875ce165b3225929496c2d85848afbff0deeb?diff=split
+### 2. 图片和视频上传的前缀配置
+```
+// ueditor/jsp/config.json
+"imageUrlPrefix": "http://image.xxx.com.cn/", /* 图片访问路径前缀 */
+"videoUrlPrefix": "http://video.xxx.com.cn", /* 视频访问路径前缀 */
+```
+### 3. 图片大小限制
+```
+// ueditor/jsp/config.json
+"imageMaxSize": 2048000, /* 上传大小限制，单位B */
+"imageCompressEnable": false, /* 是否压缩图片,默认是true */
+```
+### 4. 自己处理图片上传
+前端上传图片，是调用的`ueditor/jsp/controller.jsp?action=uploadimage`，这个controller.jsp的源码
+```
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	import="com.baidu.ueditor.ActionEnter"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+
+    request.setCharacterEncoding( "utf-8" );
+	response.setHeader("Content-Type" , "text/html");
+	
+	String rootPath = application.getRealPath( "/" );
+	
+	out.write( new ActionEnter( request, rootPath ).exec() );
+	
+%>
+```
+它里面是调用的`com.baidu.ueditor.ActionEnter`这个java类，这个类在`ueditor/jsp/lib/ueditor-1.1.2.jar`中。
+
+我们可以下载完整源码，看其代码的实现
+```
+public class ActionEnter {
+	...
+	public ActionEnter ( HttpServletRequest request, String rootPath ) {
+		this.request = request;
+		this.rootPath = rootPath;
+        this.actionType = request.getParameter( "action" );
+		...
+	}
+    public String exec () {
+		String callbackName = this.request.getParameter("callback");
+		if ( callbackName != null ) {
+            ...
+			return callbackName+"("+this.invoke()+");";
+		} else {
+			return this.invoke();
+		}
+	}
+	
+	public String invoke() {
+        switch(this.actionType){
+            case 'uploadimage':break;
+            case 'uploadvideo':break;
+        }
+    }	
+```
+服务器现在都是读写分离的，那写的过程是后台完成的，而读是前端做的，只需要配置`imageUrlPrefix`即可。
