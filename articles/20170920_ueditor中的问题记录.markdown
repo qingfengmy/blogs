@@ -60,3 +60,6 @@ public class ActionEnter {
     }	
 ```
 服务器现在都是读写分离的，那写的过程是后台完成的，而读是前端做的，只需要配置`imageUrlPrefix`即可。
+
+### 5. 上传视频回显src被清空
+修改 ueditor.config.js 文件的366行，将 whitList 修改为 whiteList。ueditor有白名单限制，可能是源码中的单词写错了。
