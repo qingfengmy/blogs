@@ -39,7 +39,7 @@ if (inputs && inputs[0]) {
 <ul class="container"></ul>
 ```
 
-> 需求：查询<ul class='container'></ul>的节点
+> 需求：查询`<ul class='container'></ul>`的节点
 ```
 # 根据class查出后，再根据ul去过滤
 window.onload = function () {
@@ -57,4 +57,4 @@ window.onload = function () {
 }
 ```
 > document.querySelector("ul.name") //只返回匹配的第一个元素
-document.querySelectorAll("ul.name")  //返回所有匹配的元素
+> document.querySelectorAll("ul.name")  //返回所有匹配的元素
