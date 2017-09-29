@@ -21,6 +21,10 @@ window.onload = function () {
   container.replaceChild(span, container.childNodes[0]);// 第一个参数是新node，第二个参数是被替换的
 }
 ```
+```
+# 错误的方式
+container.appendChild(<span>hello world</span>);
+```
 ### 2. 不支持input输入
 ```
 # 设置为readonly
