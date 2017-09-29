@@ -94,6 +94,7 @@ $ npm -global list
 # npm list命令也可以列出单个模块。
 $ npm list underscore
 ```
+> 注意：npm info查看的是npm网站上最新的version
 ### 4. 更新
 它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本较新，就会安装。
 ```
