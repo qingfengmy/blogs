@@ -21,3 +21,11 @@ window.onload = function () {
   container.replaceChild(span, container.childNodes[0]);// 第一个参数是新node，第二个参数是被替换的
 }
 ```
+### 2. 不支持input输入
+```
+# 设置为readonly
+const inputs = domNode.getElementsByTagName('input');
+if (inputs && inputs[0]) {
+  inputs[0].setAttribute('readOnly', 'readOnly');
+}
+```
