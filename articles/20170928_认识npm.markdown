@@ -95,6 +95,8 @@ $ npm -global list
 $ npm list underscore
 ```
 > 注意：npm info查看的是npm网站上最新的version
+
+> 查看本地的版本使用`npm list antd`
 ### 4. 更新
 它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本较新，就会安装。
 ```
