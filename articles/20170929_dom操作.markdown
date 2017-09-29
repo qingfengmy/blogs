@@ -1,0 +1,23 @@
+### 1. 添加子元素
+```
+<div id="container"><span>abcd</span></div>
+```
+在id为'container'的div中添加'<span>hello world</span>'的方式有两种。
+```
+# 第一种
+window.onload = function () {
+  var container = document.getElementById('container');
+  container.innerHTML = '<span style="color:red;font-size:32px">hello world</span>';
+}
+```
+```
+# 第二种
+window.onload = function () {
+  var container = document.getElementById('container');
+  var span = document.createElement('SPAN');
+  span.innerHTML = 'hello world';
+  span.style = 'color:red;font-size:32px';
+  console.log(container.childNodes);
+  container.replaceChild(span, container.childNodes[0]);// 第一个参数是新node，第二个参数是被替换的
+}
+```
