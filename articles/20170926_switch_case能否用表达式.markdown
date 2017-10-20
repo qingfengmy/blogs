@@ -44,6 +44,19 @@ console.log(true & 44);// 0
 console.log(false & 44);// 0
 console.log(11 & 44)// 8
 ```
+更需要注意的是：
+```
+console.log(44 && true);// 输出true
+```
+其实双与符号相当于一个表达式，前者是判断条件，后者是执行的代码。react中好多这样写法
+```
+<div>
+{
+  list && list.map(item=>(<span>{item}</span>))
+}
+</div>
+```
+实际返回的是后面的span数组，前一个list只是判断条件。
 ### switch case 的不长注意问题
 ```
 switch (10) {
