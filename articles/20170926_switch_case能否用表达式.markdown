@@ -44,3 +44,19 @@ console.log(true & 44);// 0
 console.log(false & 44);// 0
 console.log(11 & 44)// 8
 ```
+### switch case 的不长注意问题
+```
+switch (10) {
+    case 10:
+        console.log(10);
+    case 11:
+        console.log(11);
+        break;
+    case 12:
+        console.log(12);
+        break;
+}
+```
+输出 10 11
+
+有人会有疑问说10不符合第二个条件为什么11也会输出，答案是switch case就是这么设计的。一旦开始执行case中的代码，如果不写break，代码会忽略其他case继续执行，直到遇到下一个break。不仅js如此，java和其他语言也是如此。
