@@ -1,0 +1,174 @@
+> 在这一次整理babel之前，我对babel很混乱，因为他有好多lib.
+如：`babel_core`,`babel_2015`,`babel_cli`,`babel`,`babel_transform`等
+
+### 1. .babelrc
+带rc的都是预处理的，如.eslintrc。.babelrc的基本结构如下：
+```
+{
+    "presets":[],
+    "plugins":[]
+}
+```
+> presets，预处理器定义babel要处理哪些？常用的有`babel-preset-es2015`,`babel-preset-react`等。
+
+安装操作如下：
+```
+# ES2015转码规则
+$ npm install --save-dev babel-preset-es2015
+
+# react转码规则
+$ npm install --save-dev babel-preset-react
+
+# ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个
+$ npm install --save-dev babel-preset-stage-0
+$ npm install --save-dev babel-preset-stage-1
+$ npm install --save-dev babel-preset-stage-2
+$ npm install --save-dev babel-preset-stage-3
+```
+然后，将这些规则加入.babelrc。
+```
+  {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-2"
+    ],
+    "plugins": []
+  }
+````
+> plugins是babel的插件，常用的有`babel-plugin-transform-runtime`等。
+而在roadhog中有如下配置：
+```
+extraBabelPlugins: [
+    'transform-runtime',
+    ['import', { 'libraryName': 'antd', 'style': true }]
+  ],
+```
+里面的两个插件`babel-plugin-transform-runtime`和`babel-plugin-import`.
+安装如下：
+```
+# es6的开发版垫片(新api的补全)
+$ npm install --save-dev babel-plugin-transform-runtime
+
+# 动态导入
+$ npm install --save-dev babel-plugin-import
+```
+生产环境的es6垫片是`babel-runtime`，还可以直接引入`babel-polyfill`。
+
+### 2. babel_cli
+> Babel提供babel-cli工具，用于命令行转码。
+类似这样：
+```
+# 转码结果输出到标准输出
+$ babel example.js
+
+# 转码结果写入一个文件
+# --out-file 或 -o 参数指定输出文件
+$ babel example.js --out-file compiled.js
+# 或者
+$ babel example.js -o compiled.js
+
+# 整个目录转码
+# --out-dir 或 -d 参数指定输出目录
+$ babel src --out-dir lib
+# 或者
+$ babel src -d lib
+
+# -s 参数生成source map文件
+$ babel src -d lib -s
+```
+一般会在项目的package.json中添加它
+```
+$ npm install --save-dev babel-cli
+```
+### 3. babel-node
+> node8.5加入了对es6的支持，但我还是用的node6.9，习惯了用es6去写js，怎么让node支持es6呢？
+
+babel-cli中有一个babel_node工具，直接使用就可以
+```
+$ babel-node
+> (x => x * 2)(1)
+2
+```
+也可以
+```
+$ babel-node es6.js
+2
+```
+只需要安装`babel-cli`，然后`babel-node es6.js`即可。
+
+### 4. babel-core
+> 如果某些代码需要调用Babel的API进行转码，就要使用babel-core模块。
+代码中直接使用:
+```
+var babel = require('babel-core');
+
+// 字符串转码
+babel.transform('code();', options);
+// => { code, map, ast }
+
+// 文件转码（异步）
+babel.transformFile('filename.js', options, function(err, result) {
+  result; // => { code, map, ast }
+});
+
+// 文件转码（同步）
+babel.transformFileSync('filename.js', options);
+// => { code, map, ast }
+
+// Babel AST转码
+babel.transformFromAst(ast, code, options);
+// => { code, map, ast }
+```
+### 5. 其他
+> babel-cli的依赖
+```
+"dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "chokidar": "^1.6.1",
+    "commander": "^2.11.0",
+    "convert-source-map": "^1.5.0",
+    "fs-readdir-recursive": "^1.0.0",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.4",
+    "output-file-sync": "^1.1.2",
+    "path-is-absolute": "^1.0.1",
+    "slash": "^1.0.0",
+    "source-map": "^0.5.6",
+    "v8flags": "^2.1.1"
+  }
+```
+> babel-preset-es2015的依赖
+```
+"dependencies": {
+    "babel-plugin-check-es2015-constants": "^6.22.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-computed-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.22.0",
+    "babel-plugin-transform-es2015-duplicate-keys": "^6.24.1",
+    "babel-plugin-transform-es2015-for-of": "^6.22.0",
+    "babel-plugin-transform-es2015-function-name": "^6.24.1",
+    "babel-plugin-transform-es2015-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-systemjs": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-transform-es2015-object-super": "^6.24.1",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-es2015-sticky-regex": "^6.24.1",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-typeof-symbol": "^6.22.0",
+    "babel-plugin-transform-es2015-unicode-regex": "^6.24.1",
+    "babel-plugin-transform-regenerator": "^6.24.1"
+  }
+```
+### 6. 参考文章
+[Babel 入门教程](http://www.ruanyifeng.com/blog/2016/01/babel.html)
