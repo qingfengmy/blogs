@@ -51,11 +51,11 @@ from remote clients only ： 抓取远程的客户端的 https ,可以代表手�
 > 手机->设置->安全->受信任的凭据(这里可查看手机信任的证书)
 ### 3. 过滤设置
 #### 3.1 设置域名
-
+![image](https://github.com/qingfengmy/blogs/raw/master/sources/20171013/1.png)
 #### 3.2 设置类型
-
+![image](https://github.com/qingfengmy/blogs/raw/master/sources/20171013/2.png)
 #### 3.3 设置状态码
-
+![image](https://github.com/qingfengmy/blogs/raw/master/sources/20171013/3.png)
 ### 4. 参考文章
 [如何用Fiddler对Android应用进行抓包](http://jingyan.baidu.com/article/03b2f78c7b6bb05ea237aed2.html)
 
