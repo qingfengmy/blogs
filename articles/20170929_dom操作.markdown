@@ -1,0 +1,61 @@
+### 1. 添加子元素
+```
+<div id="container"><span>abcd</span></div>
+```
+在id为'container'的div中添加'<span>hello world</span>'的方式有两种。
+```
+# 第一种
+window.onload = function () {
+  var container = document.getElementById('container');
+  container.innerHTML = '<span style="color:red;font-size:32px">hello world</span>';
+}
+```
+```
+# 第二种
+window.onload = function () {
+  var container = document.getElementById('container');
+  var span = document.createElement('SPAN');
+  span.innerHTML = 'hello world';
+  span.style = 'color:red;font-size:32px';
+  console.log(container.childNodes);
+  container.replaceChild(span, container.childNodes[0]);// 第一个参数是新node，第二个参数是被替换的
+}
+```
+```
+# 错误的方式
+container.appendChild(<span>hello world</span>);
+```
+### 2. 不支持input输入
+```
+# 设置为readonly
+const inputs = domNode.getElementsByTagName('input');
+if (inputs && inputs[0]) {
+  inputs[0].setAttribute('readOnly', 'readOnly');
+}
+```
+### 3. 取Element
+```
+<div class="container"></div>
+<ul class="container"></ul>
+```
+
+> 需求：查询`<ul class='container'></ul>`的节点
+```
+# 根据class查出后，再根据ul去过滤
+window.onload = function () {
+    var containers = document.getElementsByClassName('container');
+    const ul = Array.prototype.slice.call(containers).filter(item=>item.tagName == 'UL')[0];
+    ul.innerHTML = 'hello wolrd';
+  }
+```
+> arrayObject.slice(start,end)根据start和end返回新的数组
+```
+# 使用querySelector
+window.onload = function () {
+  var ul = document.querySelector('ul.container');
+  ul.innerHTML = 'hello wolrd';
+}
+```
+> document.querySelector("ul.name") //只返回匹配的第一个元素
+
+> document.querySelectorAll("ul.name")  //返回所有匹配的元素

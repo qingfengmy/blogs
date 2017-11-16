@@ -1,0 +1,46 @@
+### 1. 第一种
+```
+// 创建对象
+    const img = new Image();
+    // 改变图片的src
+    img.src = url;
+    // 加载完成执行
+    img.onload = function () {
+      // 打印
+      console.log(img.width,img.height);
+    };
+```
+### 2. 第二种
+```
+const {render } = ReactDOM;
+const {Component} = React;
+const src = "http://www.nature.org/cs/groups/webcontent/@photopublic/documents/media/bluebird-640x400-1.jpg";
+
+class AtomicImage  extends Component {
+   constructor(props) {
+        super(props);
+        this.state = {dimensions: {}};
+        this.onImgLoad = this.onImgLoad.bind(this);
+    }
+    onImgLoad({target:img}) {
+        this.setState({dimensions:{height:img.offsetHeight,
+                                   width:img.offsetWidth}});
+    }
+    render(){
+        const {src} = this.props;
+        const {width, height} = this.state.dimensions;
+      
+        return (<div>
+                dimensions width{width}, height{height}
+                <img onLoad={this.onImgLoad} src={src}/>
+                </div>
+               );
+    }
+}
+
+const App = props =><div> <AtomicImage src={src}/> App </div>;
+
+                
+                
+render(<App/>,document.getElementById('root'))
+```

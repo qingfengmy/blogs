@@ -1,0 +1,172 @@
+### 1. npm来源
+node包仓库，类似于android的grandle和java的maven。
+
+他的作用，具体有两种，一是后台模块注册和管理系统，网址是[npmjs.com](http://npmjs.org)。二是他的命令行功能，他提供了很多命令行功能，如：
+```
+# 将npm更新到最新版本
+$ npm install npm@latest -g
+$ npm install npm@0.1.1 -g
+```
+```
+# 查看npm的版本和配置
+$ npm -v
+
+# npm命令列表
+$ npm help
+
+# 各个命令的简单用法(full usage)
+$ npm -l
+
+# 配置信息
+$ npm config list -l
+```
+
+### 2. 安装
+'全局安装'指的是将一个模块直接下载到Node的安装目录中，各个项目都可以调用。
+'本地安装'指的是将一个模块下载到当前目录的node_modules子目录，然后只有在当前目录和它的子目录之中，才能调用这个模块。
+```
+# 本地安装某个模块
+$ npm install <package name>
+```
+```
+# npm也支持直接输入github地址
+$ npm install git://github.com/package/path.git
+$ npm install git://github.com/package/path.git#0.1.0
+```
+```
+# 使用global参数，可以“全局安装”某个模块(简写 -g)
+$ sudo npm install -global [package name]
+```
+```
+–save：模块名将被添加到dependencies，可以简化为参数-S。
+–save-dev: 模块名将被添加到devDependencies，可以简化为参数-D。
+```
+```
+# npm install默认会安装dependencies字段和devDependencies字段中的所有模块，
+# 如果使用production参数，可以只安装dependencies字段的模块。
+$ npm install --production
+# 或者
+$ NODE_ENV=production npm install
+```
+```
+# 安装之前，npm install会先检查，node_modules目录之中是否已经存在指定模块。
+# 如果存在，就不再重新安装了，即使远程仓库已经有了一个新版本，也是如此。
+# 如果你希望，一个模块不管是否安装过，npm 都要强制重新安装，可以使用-f或--force参数。
+$ npm install <packageName> --force
+```
+```
+# 安装指定版本
+npm install antd@2.10.0
+```
+### 3. 查看
+npm 模块仓库提供了一个查询服务，叫做 registry 。以 npmjs.org 为例，它的查询服务网址是 https://registry.npmjs.org/ 。
+这个网址后面跟上模块名，就会得到一个 JSON 对象，里面是该模块所有版本的信息。比如，访问 https://registry.npmjs.org/react，就会看到 react 模块所有版本的信息。
+它跟下面命令的效果是一样的。
+```
+$ npm view react
+
+# npm view 的别名
+$ npm info react
+$ npm show react
+$ npm v react
+```
+registry 网址的模块名后面，还可以跟上版本号或者标签，用来查询某个具体版本的信息。比如， 访问 https://registry.npmjs.org/react/v0.14.6 ，就可以看到 React 的 0.14.6 版。
+
+npm采用”语义版本“管理软件包。所谓语义版本，就是指版本号为a.b.c的形式，其中a是大版本号，b是小版本号，c是补丁号。
+
+```
+# npm info还可以查看更详细的信息
+npm info react // 大json信息
+npm info react name // react
+npm info react version // 15.6.1
+```
+```
+# npm仓库搜索某个模块，会在命令行列出npm仓库中所有的含‘搜索词’的包
+$ npm search <搜索词>
+```
+```
+# 列出当前目录安装的所有模块
+$ npm list
+
+# 列出全局安装的所有模块
+$ npm -global list
+
+# npm list命令也可以列出单个模块。
+$ npm list underscore
+```
+> 注意：npm info查看的是npm网站上最新的version
+
+> 查看本地的版本使用`npm list antd`
+### 4. 更新
+它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本较新，就会安装。
+```
+# 升级本地安装的模块
+npm update -global [package name]
+```
+### 5. 删除
+```
+# 删除本地安装的模块
+sudo npm uninstall [package name] -global
+```
+### 6. 脚本
+npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
+```
+"scripts": {
+    "lint": "jshint **.js",
+    "test": "mocha test/"
+}
+```
+```
+# 列出scripts属性下的所有命令
+npm run
+```
+```
+# 执行lint脚本
+npm run lint
+```
+npm run会创建一个shell，执行指定的命令，并将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。也就是说，npm run lint直接运行jshint .js即可，而不用./node_modules/.bin/jshint .js。
+
+***注意***：npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
+
+npm在执行某些命令时，会执行一些默认脚本（前提是这些脚本已经设置了）。
+```
+prepublish：发布一个模块前执行。
+publish, postpublish：发布一个模块后执行。
+preinstall：安装一个模块前执行。
+install, postinstall：安装一个模块后执行。
+preuninstall, uninstall：卸载一个模块前执行。
+postuninstall：卸载一个模块后执行。
+preversion, version：更改模块版本前执行。
+postversion：更改模块版本后执行。
+pretest, test, posttest：运行npm test命令时执行。
+prestop, stop, poststop：运行npm stop命令时执行。
+```
+### 7. 安装过程
+```
+1. 发出npm install命令
+2. npm 向 registry 查询模块压缩包的网址
+3. 下载压缩包，存放在~/.npm目录
+4. 解压压缩包到当前项目的node_modules目录
+```
+### 8. 解决离线安装1
+npm 提供了一个--cache-min参数，用于从缓存目录安装模块。
+--cache-min参数指定一个时间（单位为分钟），只有超过这个时间的模块，才会从 registry 下载。
+```
+$ npm install --cache-min 9999999 <package-name>
+```
+上面命令指定，只有超过999999分钟的模块，才从 registry 下载。实际上就是指定，所有模块都从缓存安装，这样就大大加快了下载速度。
+它还有另一种写法。
+```
+$ npm install --cache-min Infinity <package-name>
+```
+但是，这并不等于离线模式，这时仍然需要网络连接。npm 团队知道存在这些问题，正在重写 cache。并且，将来会提供一个--offline参数，使得 npm 可以在离线情况下使用。
+### 9. 离线安装解决方案2
+第一类：代理regist。regist的请求经过代理，代理返回超时，走cache。
+第二类：代替npm install。
+```
+npm-cache install
+```
+
+### 10. 参考文章
+[npm 模块安装机制简介](http://www.ruanyifeng.com/blog/2016/01/npm-install.html)
+[npm模块管理器](http://blog.csdn.net/ligang2585116/article/details/47703291)

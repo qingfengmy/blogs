@@ -60,3 +60,22 @@ public class ActionEnter {
     }	
 ```
 服务器现在都是读写分离的，那写的过程是后台完成的，而读是前端做的，只需要配置`imageUrlPrefix`即可。
+
+### 5. 上传视频回显src被清空
+修改 ueditor.config.js 文件的366行，将 whitList 修改为 whiteList。ueditor有白名单限制，可能是源码中的单词写错了。
+
+### 6. 上传视频video标签中带source标签的问题
+插入video标签后，里面嵌套了source标签，由于是在小程序端使用，wxparse插件会报错，所以用正则把source标签替换掉
+```
+// 替换source标签
+const str = "aaa<source src='http://file.xxx.net/ueditor/jsp/upload/video/20170922/1506081788002070202.mp4' type='video/mp4'/>bbb";
+
+const result = str.replace(/<source[\w\s=:'.\/0-9]+\/>/g,'');
+console.log(result);// aaabbb
+```
+### 7. 上传视频的弹窗有插入视频链接的功能
+由于是小程序端使用该富文本，所以第三方的视频链接肯定不支持，开始的解决方式是找到弹窗的html把插入视频的支持给删掉，但删掉后ueditor的js会报错。
+于是采用第二种方式，给该input加readonly属性。	
+```
+<input id="videoUrl" type="text" readonly="readonly">
+```

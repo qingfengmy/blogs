@@ -1,0 +1,61 @@
+今天看了一篇js的技术文章《你真的知道怎么用javascript来写一个倒计时吗 ?》文章地址：https://github.com/gomeplusFED/blog/blob/master/2016-04/do-you-really-understand-how-to-write-a-countdown-by-javascript.md
+
+我们的小程序在做秒杀需要用到倒计时，于是看了这篇文章。文章中作者布置了任务，每人写个倒计时，于是十个人写了十个，代码量思路各有不同，最后作者也写了一个。作为总结，最后的话很有启发性：每个工程师的思维和经验确实决定了编码的高度。比较好的代码都有这几个特点：面向对象，性能，可维护，可扩展。
+
+```
+// 第一版
+let count=0;
+setInterval(()=>console.log(count++), 1000);
+```
+```
+// 面向过程，扩展性差
+// 第二版
+const delay = () => {
+  console.log(count++);
+  setTimeout(delay, 1000);
+}
+delay();
+
+```
+```
+// 第三版
+const addZero = (n)=>(n<10?`0${n}`:n);
+
+const endTime = new Date("2018/05/20,20:20:20");
+const startTime = new Date();
+
+let leftTime = (endTime.getTime() - startTime.getTime())/1000;
+const delay = () => {
+  leftTime-=1;
+  const d = parseInt(leftTime/(60*60*24));
+  const h = parseInt(leftTime%(60*60*24)/(60*60));
+  const m = parseInt(leftTime%(60*60*24)%(60*60)/60);
+  const s = parseInt(leftTime%(60*60*24)%(60*60)%60);
+  console.log(`剩余时间：${addZero(d)}天${addZero(h)}小时${addZero(m)}分${addZero(s)}秒`);
+  setTimeout(delay, 1000);
+}
+delay();
+```
+
+### 1. 分析1：左侧补0
+我的补0的问题，第一返回值有string和number；第二只考虑了1个0，可能存在多0情况；第三，没考虑负数问题。
+```
+/**
+* n: 要转换的数字
+* len: 转换为几位数字
+* ch: 要补的字符
+*/
+function leftPad(n, len, ch){
+    len = len || 2;
+    n = n + '';
+    var diff = len - n.length;// 需要补几个0
+    if (diff > 0) {
+        n = new Array(diff + 1).join(ch||' ') + n;// [,,].join('0') = 0使用数组避免循环
+    }
+    return n;
+}
+```
+### 2. 分析2：setTimeOut和setInterval的问题
+setInerval的问题在于，如果执行时间大于了间隔时间，会出现问题。使用setTimeOut模拟setInterval会解决该问题。
+如间隔1s，实际函数执行2s，那么setInterval会出问题，而setTimeOut会间隔3s执行。
+setInterval引发错误会造成回调堆积，每次到时间只能回调1个，剩下的造成内存占用。
