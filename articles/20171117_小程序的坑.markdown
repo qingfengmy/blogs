@@ -1,0 +1,16 @@
+### 1. ios不支持new Date('2017-11-17 12:20:00')的问题
+```
+// 不支持
+const date = new Date('2017-11-17 12:20:00');
+// 支持
+const date1 = new Date('2017/11/17 12:20:00');
+```
+参考地址：https://developers.weixin.qq.com/blogdetail?action=get_post_info&docid=c148160d9d7f24b7e8271778de57864b&highline=Date&token=&lang=zh_CN
+
+### 2. ios不支持webp格式的图片
+因为ios不支持，所以小程序在ios端也不支持，注意有些图片是 图片服务器返回的，你保存下来是png格式，但因为链接里带webp，就是webp的图片，这个问题很坑。
+参考地址：https://developers.weixin.qq.com/blogdetail?action=get_post_info&docid=fd379c10cc80e3317800ba4d029539bd&highline=webp&token=&lang=zh_CN
+
+### 3. get请求带汉字问题
+get请求带汉字，需要先进行url编码，后台接到参数后再url解码。如果是post请求则没有这个问题。另外，header.contentType设置为'application/json'时，会对数据进行json序列化。
+设置为'application/x-www-form-urlencoded'会将数据转为query string。对java而言，get请求的参数也是query string的，这样他们可以通用处理get和post请求。
