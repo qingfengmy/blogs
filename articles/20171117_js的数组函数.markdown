@@ -1,0 +1,54 @@
+### 1. splice
+splice的意思是 粘接。
+它是数组的函数。
+它的作用是操作数组（增删改）
+参数是(index,howmany,item1,item2,...);返回值是被删除的项目。
+```
+index: 必须，整数，操作的位置
+howmany: 必须，整数，要删除的项目数量，如果为0则不会删除
+item1...: 非必须，向数组添加的项目。
+```
+注意： splice会操作当前array.
+```
+var arr = ['a','b','c']
+// 增
+var result = arr.splice(1,0,'d'); // arr: a,d,b,c; result: []
+// 删
+var result = arr.splice(1,1);// arr: a,b,c; result: ['d']
+// 改
+var result = arr.splice(1,1,'e');// arr: a,e,c; result: ['b']
+```
+### 2. slice
+slice的意思是切片。
+它是数组的函数。
+它的作用是操作数组（查）
+参数是(start, end)；返回值是一个新数组。
+```
+var arr = ['a','b','c'];
+var result = slice(1,2);// result:['b']
+```
+### 3. shift/unshift/push/pop
+shift:从集合中把第一个元素删除，并返回这个元素的值。
+```
+const arr = [1, 2, 3];
+const result = arr.shift();
+console.log(arr, result);//[2,3],1
+```
+unshift: 在集合开头添加一个或更多元素，并返回新的长度
+```
+const arr = [1, 2, 3];
+const result = arr.unshift(4,5);
+console.log(arr, result);//[ 4, 5, 1, 2, 3 ] 5
+```
+push:在集合中添加元素，并返回新的长度
+```
+const arr = [1, 2, 3];
+const result = arr.push(4);
+console.log(arr, result);//[ 1, 2, 3, 4 ] 4
+```
+pop:从集合中把最后一个元素删除，并返回这个元素的值。
+```
+const arr = [1, 2, 3];
+const result = arr.pop();
+console.log(arr, result);//[ 1, 2 ] 3
+```
