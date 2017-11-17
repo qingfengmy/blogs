@@ -11,3 +11,11 @@ overflow: hidden;
 text-overflow: ellipsis; 
 white-space: nowrap;
 ```
+
+--webkit-box的其他属性：
+```
+display: -webkit-box;  使用flexbox 布局
+-webkit-box-pack: center;  实现容器内容垂直居中
+-webkit-box-align: center;  实现容器内的内容水平居中
+-webkit-box-orient: vertical; 容器内的元素垂直排列
+```
