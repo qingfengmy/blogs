@@ -2,3 +2,7 @@
 ```
 JSON.parse(JSON.stringify(obj))
 ```
+### 2. react渲染富文本页面
+```
+<div dangerouslySetInnerHTML={{ __html: 你的html字符串 }}/>
+```
