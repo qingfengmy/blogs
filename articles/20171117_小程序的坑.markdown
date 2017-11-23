@@ -18,3 +18,7 @@ get请求带汉字，需要先进行url编码，后台接到参数后再url解�
 有时候我们从当前页带参数到下一个页面，如果参数id为undefined，那么下一个页面options.id就是字符串‘undefined’，此时用if去判断，它是true。这个很坑。解决方式是url编码再传，或者再传之前处理undefined问题。
 ### 5. tab上的path删掉后已分享出去的tab页面如何展示？
 比如`tab\cart`分享出去，然后把tab上的cart页面删掉，此时点击已分享出去的`tab\cart`，cart页面会以一般的page展示，也就是说只要配在`pages`里面，他就有页面展示，如果配在`tabBar`上则在tabBar上展示。
+
+
+
+### n. [微信小程序常见FAQ](https://developers.weixin.qq.com/blogdetail?action=get_post_info&lang=zh_CN&token=&docid=2fcdb7794d48c59f7624f53e94d0ae22)
