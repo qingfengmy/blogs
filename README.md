@@ -19,3 +19,4 @@
 ### 14. [20171128_requiresJS和AMD规范](https://github.com/qingfengmy/blogs/blob/master/articles/20171128_requiresJS%E5%92%8CAMD%E8%A7%84%E8%8C%83.markdown)
 ### 15. [20171204_sourcetree的问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171204_sourcetree%E7%9A%84%E9%97%AE%E9%A2%98.markdown)
 ### 16. [20171205_webstorm问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171205_webstorm%E9%97%AE%E9%A2%98.markdown)
+### 17. [20171205_书签](https://github.com/qingfengmy/blogs/blob/master/articles/20171205_%E4%B9%A6%E7%AD%BE.markdown)
