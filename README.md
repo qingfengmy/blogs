@@ -18,3 +18,4 @@
 ### 13. [20171122_js的Hank技能](https://github.com/qingfengmy/blogs/blob/master/articles/20171122_js%E7%9A%84Hank%E6%8A%80%E8%83%BD.markdown)
 ### 14. [20171128_requiresJS和AMD规范](https://github.com/qingfengmy/blogs/blob/master/articles/20171128_requiresJS%E5%92%8CAMD%E8%A7%84%E8%8C%83.markdown)
 ### 15. [20171204_sourcetree的问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171204_sourcetree%E7%9A%84%E9%97%AE%E9%A2%98.markdown)
+### 16. [20171205_webstorm问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171205_webstorm%E9%97%AE%E9%A2%98.markdown)
