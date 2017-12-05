@@ -3,3 +3,14 @@
 
 [eslint](http://eslint.cn/)
 
+### 2. 阮一峰
+[ECMAScript 6 入门](http://es6.ruanyifeng.com/#README)
+
+[JavaScript 标准参考教程](http://javascript.ruanyifeng.com/)
+
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/)
+
+#### flex布局
+[Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool)
+
+[Flex 布局教程：实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
