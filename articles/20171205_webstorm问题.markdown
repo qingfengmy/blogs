@@ -1,5 +1,5 @@
 ### 1. 保存设置
-图片
+![image](https://github.com/qingfengmy/blogs/raw/master/sources/20171205/1.jpg)
 > 1. 激活当前窗口时保存
 > 2. 切换到其他窗口的时候（当前窗口没有被激活）保存
 > 3. 隔多久自动保存
