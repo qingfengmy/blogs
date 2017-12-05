@@ -8,3 +8,25 @@
 ### 2. 编辑后没出现‘*’标志（*标志表示未保存）
 设置问题。
 > Editor>Genaral>Editor Tabs>Mark modified tabs with asterisk
+
+### 3. webstorm的Prettier设置
+#### 3.1 安装
+```
+npm install --global prettier
+```
+#### 3.2 设置
+> 1. File > Settings > Tools > External Tools > 点击 + 号 
+> 2. Name为 `prettier`
+> 3. Program 选择prettier.cmd所在的路径（我的路径是`C:\Users\Administrator\AppData\Roaming\npm\prettier.cmd`）
+> 4. Parameters 设置为 `--write [other opts] $FilePathRelativeToProjectRoot$`
+> 5. Working directory 设置为 `$ProjectFileDir$`
+> 6. 以上设置是对当前文件生效，如果要对当前目录下的所有文件生效，需要设置Parameters 为` --write [other opts] $FileDirRelativeToProjectRoot$/**/{*.js,*.jsx}`
+#### 3.3 使用
+配置快捷键
+> File > Settings > Keymap > 搜索 `external tool`.
+#### 3.4 File Watcher
+没看懂干啥的 略
+
+参考文章:
+https://github.com/prettier/prettier
+https://prettier.io/docs/en/webstorm.html
