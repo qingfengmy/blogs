@@ -27,6 +27,7 @@ npm install --global prettier
 #### 3.4 File Watcher
 没看懂干啥的 略
 
-参考文章:
+#### 3.5 参考文章:
 https://github.com/prettier/prettier
+
 https://prettier.io/docs/en/webstorm.html
