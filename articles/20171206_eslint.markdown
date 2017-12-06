@@ -1,0 +1,187 @@
+### 1. 安装
+```
+npm install eslint --save-dev // 局部
+npm install eslint -g // 全局
+```
+### 2. 初始化
+```
+eslint --init
+```
+
+> Note: 此处及以后都假设全局安装`eslint`或者在`npm script`中使用`eslint`
+
+### 3. 使用eslint进行校验
+```
+eslint file.js
+```
+### 4. 配置
+#### 4.1 parser
+指定eslint使用的 parser，默认是Espree，除此之外常用的还有：
+> Esprima 
+
+> Babel-ESLint
+
+.eslintrc示例：
+```
+{
+    "parser": "esprima"
+}
+```
+#### 4.2 parserOptions
+指定传给 parser 的信息
+
+.eslintrc示例：
+```
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    }
+}
+```
+#### 4.3 env
+指定程序运行的环境，这关系到有哪些预先定义好的全局变量
+
+> * browser - 浏览器中的全局变量
+> * node - nodejs中的全局变量
+> * es6 - 启用 es6 中除了模块之外的其他特性（这会自动将parserOptions.ecmaVersion设置为6）
+> * worker - web worker中的全局变量
+> * mocha - mocha 测试框架中的全局变量
+> * ...
+
+> Note: 可以同时定义多个env
+
+.eslintrc示例:
+```
+{
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}
+```
+#### 4.4 globals
+全局变量申明，true表示允许改写，false表示不允许改写
+
+.eslintrc示例：
+```
+{
+    "globals": {
+        "var1": true,
+        "var2": false
+    }
+}
+```
+#### 4.5 plugins
+声明使用了哪些插件，插件名可以默认忽略eslint-plugin-前缀，这些插件可以用于rules、env和extends等配置中
+
+.eslintrc示例：
+
+{
+    "plugins": [
+        "example", // or "eslint-plugin-example"
+        "react", // or "eslint-plugin-react"
+    ]
+}
+#### 4.6 extends
+继承一套基础配置
+
+.eslintrc示例：
+```
+{
+    "extends": "eslint:recommended"
+}
+```
+或者
+```
+{
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+  ],
+}
+```
+#### 4.7 rules
+具体校验规则的配置.off是关，0是关，1是警告，2是错误。
+
+.eslintrc示例：
+```
+{
+    "rules": {
+       "no-set-state": "off"
+    }
+}
+```
+> 可以参考 http://eslint.org/docs/rules/ 了解更多rule
+
+### 4.8 settings
+共享的配置，配置中的信息将会被传递给所有要执行的规则（rule）
+
+.eslintrc示例：
+```
+{
+    "settings": {
+        "sharedData": "Hello"
+    }
+}
+```
+### 5. 注释配置
+注释配置是指在js文件中通过注释来单独指定一些校验信息
+
+#### 5.1 env
+```
+/* eslint-env node, mocha */
+```
+#### 5.2 global
+```
+/* global var1:false, var2:false */
+```
+#### 5.3 rule
+```
+/* eslint eqeqeq: 0, curly: 2 */
+```
+
+> * "off" or 0: 关闭这条规则
+> * "warn" or 1: 开启规则，如果校验有问题则抛出警告
+> * "error" or 2: 开启规则，如果校验有问题则抛出错误
+
+关闭/开启所有规则校验
+```
+/* eslint-disable */
+
+alert('foo');
+
+/* eslint-enable */
+```
+关闭/开启校验部分具体的规则校验
+```
+/* eslint-disable no-alert, no-console */
+
+alert('foo');
+console.log('bar');
+
+/* eslint-enable no-alert, no-console */
+```
+关闭当前行的所有规则校验
+```
+alert('foo'); // eslint-disable-line
+```
+关闭下一行的所有规则校验
+```
+// eslint-disable-next-line
+alert('foo');
+```
+关闭当前行的具体规则校验
+```
+alert('foo'); // eslint-disable-line no-alert
+```
+关闭下一行的具体规则校验
+```
+// eslint-disable-next-line no-alert
+alert('foo');
+```
+### 6. 参考文章
+[eslint 学习笔记](https://segmentfault.com/a/1190000010245331#articleHeader0)
