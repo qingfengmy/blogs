@@ -12,5 +12,40 @@
 
 > sourcetree>工具>启动SSH助手>添加.ppk文件即可
 
-### 参考文章
+#### 参考文章
 [git Couldn't load this key (OpenSSH SSH-2 private key)](http://blog.csdn.net/irabbit0708/article/details/54089439)
+### 3. 跳过sourcetree的翻墙注册
+#### 第一步：打开sourcetree，到注册页关闭。
+#### 第二步：打开 `我的电脑`，在最上方的地址栏直接输入以下地址：
+```
+%LocalAppData%\Atlassian\SourceTree\
+```
+#### 第三步：在这个目录下新建一个名为 accounts.json 的文件
+把以下文本粘贴过去
+```
+[
+  {
+    "$id": "1",
+    "$type": "SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity",
+    "Authenticate": true,
+    "HostInstance": {
+      "$id": "2",
+      "$type": "SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount",
+      "Host": {
+        "$id": "3",
+        "$type": "SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount",
+        "Id": "atlassian account"
+      },
+      "BaseUrl": "https://id.atlassian.com/"
+    },
+    "Credentials": {
+      "$id": "4",
+      "$type": "SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account",
+      "Username": "",
+      "Email": null
+    },
+    "IsDefault": false
+  }
+]
+```
+#### 参考文章：[Windows 版 SourceTree 免登录跳过初始设置的方法](http://www.jianshu.com/p/3478e2a214a1)
