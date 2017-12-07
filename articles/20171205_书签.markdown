@@ -3,6 +3,8 @@
 
 [eslint](http://eslint.cn/)
 
+[eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+
 ### 2. 阮一峰
 [ECMAScript 6 入门](http://es6.ruanyifeng.com/#README)
 
