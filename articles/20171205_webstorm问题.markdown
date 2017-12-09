@@ -35,3 +35,6 @@ npm install --global prettier
 https://github.com/prettier/prettier
 
 https://prettier.io/docs/en/webstorm.html
+
+### 4. 激活
+http://blog.csdn.net/it_talk/article/details/52448597
