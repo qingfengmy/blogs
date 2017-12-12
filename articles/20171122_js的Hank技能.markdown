@@ -25,5 +25,6 @@ window.onbeforeunload = function(event) {
 
 ![image](https://github.com/qingfengmy/blogs/raw/master/sources/20171122/1.png)
 
+> 注意：
 > 这是浏览器级别的 confirm 弹窗，不受页面控制，不能自定义。
 > onbeforeunload 事件只能返回一个字符串，此事件中的 alert、confirm、prompt 调用都会被忽略。
