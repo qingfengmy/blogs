@@ -170,5 +170,27 @@ babel.transformFromAst(ast, code, options);
     "babel-plugin-transform-regenerator": "^6.24.1"
   }
 ```
-### 6. 参考文章
+
+### 6. 浏览器环境使用
+以上都是开发时使用，打包时会吧es6转为es5，如果在浏览器环境中使用，babel也是支持的。
+
+只是从babel6.0开始，不直接支持浏览器环境，只能安装babel@5.x的版本，在script中引如：
+```
+$ npm install babel-core@old
+
+<script src="node_modules/babel-core/browser.js"></script>
+<script type="text/babel">
+// Your ES6 code
+</script>
+```
+或者，直接引cdn上的js
+```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.4.4/babel.min.js"></script>
+<script type="text/babel">
+// Your ES6 code
+</script>
+```
+需要注意的是，浏览器环境是把es6的代码下载完成后，再转为es5执行，用的多性能可能有问题。
+
+### 7. 参考文章
 [Babel 入门教程](http://www.ruanyifeng.com/blog/2016/01/babel.html)
