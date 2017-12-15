@@ -79,8 +79,9 @@ $ babel src -d lib -s
 ```
 一般会在项目的package.json中添加它
 ```
-$ npm install --save-dev babel-cli
+$ npm install -g babel-cli
 ```
+如果要配置环境变量，需要知道安装路径。windows的路径是`C:\Users\Administrator\AppData\Roaming\npm`
 ### 3. babel-node
 > node8.5加入了对es6的支持，但我还是用的node6.9，习惯了用es6去写js，怎么让node支持es6呢？
 
