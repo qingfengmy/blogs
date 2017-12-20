@@ -24,3 +24,30 @@ for(var i=0; i<10; i++){
   }(i))
 }
 ```
+### 2. 第二题
+> 一个函数fn，参数是n，根据n的值，输出一个长度为n的随机数组，数组中的值是2-32之间。
+
+> 主要思路在 生成随机数和检验是否重复
+```
+function getRandom() {
+  return 2 + Math.floor(Math.random() * 30);
+}
+function checkInArr(arr, i) {
+  return arr.some(item => item === i);
+}
+function fn(n) {
+  // n位2-32的随机整数
+  let arr = [];
+  for(let i = 0; i < n; i++) {
+    let x = getRandom();
+    while(checkInArr(arr, x)) {
+      x = getRandom();
+    }
+    arr.push(x);
+  }
+  return arr;
+}
+console.log(fn(3));
+console.log(fn(11));
+console.log(fn(30));
+```
