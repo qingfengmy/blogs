@@ -14,10 +14,24 @@ const date1 = new Date('2017/11/17 12:20:00');
 ### 3. get请求带汉字问题
 get请求带汉字，需要先进行url编码，后台接到参数后再url解码。如果是post请求则没有这个问题。另外，header.contentType设置为'application/json'时，会对数据进行json序列化。
 设置为'application/x-www-form-urlencoded'会将数据转为query string。对java而言，get请求的参数也是query string的，这样他们可以通用处理get和post请求。
+
 ### 4. path带参数为undefined的问题
 有时候我们从当前页带参数到下一个页面，如果参数id为undefined，那么下一个页面options.id就是字符串‘undefined’，此时用if去判断，它是true。这个很坑。解决方式是url编码再传，或者再传之前处理undefined问题。
+
 ### 5. tab上的path删掉后已分享出去的tab页面如何展示？
 比如`tab\cart`分享出去，然后把tab上的cart页面删掉，此时点击已分享出去的`tab\cart`，cart页面会以一般的page展示，也就是说只要配在`pages`里面，他就有页面展示，如果配在`tabBar`上则在tabBar上展示。
+
+### 6. data-areanum
+区号，字段定义为驼峰式areaNum
+```
+<view data-areaNum="010" bindtap="handleTap" />
+
+handleTap(e){
+  // e.currentTarget.dataset.areanum 有值为010
+  // e.currentTarget.dataset.areaNum 没值为undefined
+}
+```
+看到了什么，在data-自定义属性时，驼峰式不是别。
 
 
 
