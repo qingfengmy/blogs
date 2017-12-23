@@ -34,6 +34,18 @@ require(['utils'],function(utils){
 参考文章：[requiresJS和AMD规范](https://github.com/qingfengmy/blogs/blob/master/articles/20171128_requiresJS%E5%92%8CAMD%E8%A7%84%E8%8C%83.markdown)
 
 ### 2. commonjs
+每个文件都是一个module，文件内的变量和函数都是私有的。每个文件都有一个`module`对象，它的exports属性表示对外暴露的参数。为了方便，每个文件都有一个exports属性，其值被赋给了`module.exports`.如下代码：
+```
+exports = module.exports;
+```
+
+> 需要注意的是，exports不能直接指向任意值
+
+```
+exports.a = 123;//正确 相当于module.exports.a = 123;
+exports = 123// 错误，这样的话，exports不再和module.exports有关系。
+```
+
 > 这里实现的是node环境
 
 utils.js的导出
@@ -41,8 +53,9 @@ utils.js的导出
 var log = function(msg){
     console.log('common',msg);
 }
-
+// 以下两行代码同值
 module.exports.log= log;
+exports.log = log;
 ```
 index.js的导入
 ```
@@ -52,4 +65,111 @@ utils.log('hello world');// common hello world
 ```
 参考地址：[阮一峰-CommonJS规范](http://javascript.ruanyifeng.com/nodejs/module.html)
 
-### 3. UMD规范
+### 3. AMD规范和CommonJS规范的区别
+> CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数。由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
+
+### 4. UMD规范
+UMD又是个什么玩意呢？UMD是AMD和CommonJS的一个糅合。AMD是浏览器优先，异步加载；CommonJS是服务器优先，同步加载。
+
+既然要通用，怎么办呢？那就先判断是否支持node.js的模块，存在就使用node.js；再判断是否支持AMD（define是否存在），存在则使用AMD的方式加载。这就是所谓的UMD。
+```
+((root, factory) => {
+  if (typeof define === 'function' && define.amd) {
+    //AMD
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    //CommonJS
+    var $ = requie('jquery');
+    module.exports = factory($);
+  } else {
+    //都不是，浏览器全局定义
+    root.testModule = factory(root.jQuery);
+  }
+})(this, ($) => {
+  //do something...  这里是真正的函数体
+});
+```
+参考文章：
+[认识AMD、CMD、UMD、CommonJS](https://www.cnblogs.com/humin/p/5389901.html)
+[什么是 AMD，CommonJS 和 UMD？](https://www.jianshu.com/p/ec2844e0aea9)
+
+### 5. es6模块
+
+导出
+```
+const log = (msg)=>{
+    console.log('es6',msg);
+}
+
+export default log;
+```
+
+导入
+```
+import log from './utils';
+
+log('hello world');
+```
+
+> node 环境
+
+node8.5是支持es6的，但我现在用的是node6.9。那么当前node版本需要以下三步：
+```
+// 1. 安装babel-cli（其中内置了babel-node命令）
+npm install -g babel-cli
+// 2. 安装es2015的preset
+npm install --save-dev babel-preset-es2015
+// 3. 新建.babelrc文件
+{
+  "presets": [
+    "es2015"
+  ],
+  "plugins": []
+}
+```
+最后运行`babel-node`命令即可
+```
+babel-node index.js  // es6 hello world
+```
+
+> 浏览器环境
+
+babel从6.0开始不直接支持浏览器环境，需要编译完再放到浏览器环境。我们可以从babel5.x的版本拿到babel直接支持浏览器的js。两种方式：
+```
+// 其一，npm install babel-core@5.8.38
+<script src="node_modules/_babel-core@5.8.38@babel-core/browser.js"></script>
+<script type="text/babel" src="index.js"></script>
+```
+```
+// 其二，直接引用cdn
+<script src="https://cdn.bootcss.com/babel-core/5.8.38/browser.js"></script>
+<script type="text/babel" src="index.js"></script>
+```
+但是，`import`是转为了`require`，但是浏览器环境是没有require的，也就是没有CommonJS的require。所以还是运行不了。
+
+> 仔细想想，浏览器支持CommonJS是个伪命题。CommonJS是同步加载js，只适用于js都在本地的node环境或者es6的开发环境。浏览器环境是从服务器加载的，同步的话，浏览器进程必须等前一个js加载完，再加载后面的。会造成浏览器卡死。当然npm上有浏览器支持CommonJS的实现，具体可看(浏览器加载 CommonJS 模块的原理与实现)[http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html]
+
+### 6. es6模块的其他问题
+导出
+```
+const log = (msg)=>{
+    console.log('es6',msg);
+}
+
+export default log;
+
+
+export const a = 1;
+export const b = 2;
+```
+导入
+```
+import utils from './utils';
+import {log,a,b} from './utils';
+import * as all from './utils';
+
+console.log(utils,all);// [Function: log] 
+console.log(log,a,b);// undefined 1 2 
+console.log(all);// { default: [Function: log], a: 1, b: 2 }
+```
+注意三种方式是有区别的。
