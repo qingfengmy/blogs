@@ -173,3 +173,8 @@ console.log(log,a,b);// undefined 1 2
 console.log(all);// { default: [Function: log], a: 1, b: 2 }
 ```
 注意三种方式是有区别的。
+
+### 7. cdn网站
+http://www.bootcdn.cn/babel-core/
+
+http://cdn.code.baidu.com/
