@@ -1,0 +1,55 @@
+js的模块构建方式，主要有四种：AMD/CommonJS/UMD/ES6，下面对这四种方式进行说明。
+### 1. AMD
+> 这里实现的是浏览器环境
+首先必须引入require.js来实现模块化，这里使用百度的cdn资源
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMD</title>
+    <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+</body>
+</html>
+```
+导出使用define
+```
+// utils.js
+define(function(){
+    var log = function(msg){
+        console.log('amd', msg);
+    }
+    return { log: log };
+})
+````
+导入使用require
+```
+// index.js
+require(['utils'],function(utils){
+    utils.log('hello world'); // amd hello world
+})
+```
+参考文章：[requiresJS和AMD规范](https://github.com/qingfengmy/blogs/blob/master/articles/20171128_requiresJS%E5%92%8CAMD%E8%A7%84%E8%8C%83.markdown)
+
+### 2. commonjs
+> 这里实现的是node环境
+
+utils.js的导出
+```
+var log = function(msg){
+    console.log('common',msg);
+}
+
+module.exports.log= log;
+```
+index.js的导入
+```
+var utils = require('./utils.js');
+
+utils.log('hello world');// common hello world
+```
+参考地址：[阮一峰-CommonJS规范](http://javascript.ruanyifeng.com/nodejs/module.html)
+
+### 3. UMD规范
