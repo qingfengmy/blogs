@@ -149,6 +149,24 @@ babel从6.0开始不直接支持浏览器环境，需要编译完再放到浏览
 
 > 仔细想想，浏览器支持CommonJS是个伪命题。CommonJS是同步加载js，只适用于js都在本地的node环境或者es6的开发环境。浏览器环境是从服务器加载的，同步的话，浏览器进程必须等前一个js加载完，再加载后面的。会造成浏览器卡死。当然npm上有浏览器支持CommonJS的实现，具体可看(浏览器加载 CommonJS 模块的原理与实现)[http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html]
 
+> 终极方案实现(以Babel配合Browserify实现)
+
+```
+// 1. 安装browserify(作用是浏览器环境实现CommonJS)
+sudo cnpm install browserify -g
+// 2. 安装babelify babel-core babel-preset-es2015
+npm install --save-dev babelify babel-core babel-preset-es2015
+// 3. 转换ES6
+browserify index.js -o bundle.js -t [ babelify --presets [ es2015 ] ]
+```
+在package.json设置下面的代码，就不用每次命令行都输入参数了。
+```
+{
+  "browserify": {
+    "transform": [["babelify", { "presets": ["es2015"] }]]
+  }
+}
+```
 ### 6. es6模块的其他问题
 导出
 ```
