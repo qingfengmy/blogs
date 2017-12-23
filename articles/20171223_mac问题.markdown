@@ -20,3 +20,12 @@ dyld: Symbol not found: _node_module_register
 解决方式是：`把node_modules中的fsevents文件夹删掉即可。`
 
 参考地址：https://segmentfault.com/q/1010000010100427
+
+### 3. cnpm
+np有时需要翻墙，有时下载很慢，cnpm是淘宝的镜像，使用方式：
+```
+$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+```
+npm i 改为 cnpm i
+```
