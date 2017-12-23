@@ -1,0 +1,22 @@
+### 1. npm permission denied
+```
+sudo npm install --global vue-cli
+输入登陆密码即可
+```
+sudo是linux系统管理指令，是允许系统管理员让普通用户执行一些或者全部的root命令的一个工具
+
+### 2. fsevents
+从GitHub上下载一个项目，然后执行`npm install`命令，安装完成依赖后，运行报如下错误：
+```
+dyld: lazy symbol binding failed: Symbol not found: _node_module_register
+  Referenced from: /Users/zhangtao/zht/work/wxmgr/node_modules/fsevents/lib/binding/Release/node-v48-darwin-x64/fse.node
+  Expected in: flat namespace
+
+dyld: Symbol not found: _node_module_register
+  Referenced from: /Users/zhangtao/zht/work/wxmgr/node_modules/fsevents/lib/binding/Release/node-v48-darwin-x64/fse.node
+  Expected in: flat namespace
+```
+
+解决方式是：`把node_modules中的fsevents文件夹删掉即可。`
+
+参考地址：https://segmentfault.com/q/1010000010100427
