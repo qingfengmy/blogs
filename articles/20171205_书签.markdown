@@ -18,8 +18,10 @@
 [Flex 布局教程：实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 
 
-### 3. 素材网
+### 3. 工具
 [千图网](http://www.58pic.com/tupian/MP4shipinsucai.html)
+
+[tinypng](https://tinypng.com/)
 
 ### 4. react 技术栈
 [react官网](https://reactjs.org/)
