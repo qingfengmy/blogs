@@ -31,7 +31,18 @@ handleTap(e){
   // e.currentTarget.dataset.areaNum 没值为undefined
 }
 ```
-看到了什么，在data-自定义属性时，驼峰式不是别。
+看到了什么，在data-自定义属性时，驼峰式不识别。
+
+### 7. 小程序自定义组件的properties
+> properties中的数据和data中的数据都会统一放在data中，通过`setData`修改。
+
+> properties中的数据，和react不同，是可以改的。通过`setData`修改。
+
+> observer是再properties的字段改变时的回调，不设置observer，父组件的字段改变，子组件properties也会跟着改，然后刷新页面。
+
+> 相比而言，observer的用处是有新值和旧值，可以做其他处理。
+
+> 其他：properties的字段名用驼峰如myName，wxml中组件props传值用my-name，setData也用驼峰。
 
 
 
