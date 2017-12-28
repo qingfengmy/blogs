@@ -22,3 +22,6 @@
 ### 15. [20171204_sourcetree的问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171204_sourcetree%E7%9A%84%E9%97%AE%E9%A2%98.markdown)
 ### 16. [20171205_webstorm问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171205_webstorm%E9%97%AE%E9%A2%98.markdown)
 ### 17. [20171206_eslint](https://github.com/qingfengmy/blogs/blob/master/articles/20171206_eslint.markdown)
+### 18. [20171222_支付宝小程序和微信的api不同之处](https://github.com/qingfengmy/blogs/blob/master/articles/20171222_%E6%94%AF%E4%BB%98%E5%AE%9D%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%BE%AE%E4%BF%A1%E7%9A%84api%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84.markdown)
+### 19. [20171223_js的模块构建方式](https://github.com/qingfengmy/blogs/blob/master/articles/20171223_js%E7%9A%84%E6%A8%A1%E5%9D%97%E6%9E%84%E5%BB%BA%E6%96%B9%E5%BC%8F.markdown)
+### 20. [20171223_mac问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171223_mac%E9%97%AE%E9%A2%98.markdown)
