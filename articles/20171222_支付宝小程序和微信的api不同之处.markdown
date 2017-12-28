@@ -17,3 +17,5 @@ console.log(name);
 const name = my.getStorageSync({key:'name'}).data;
 console.log(name);
 ```
+### 3. picker
+支付宝的picker组件只有单选，无法级联操作。
