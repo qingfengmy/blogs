@@ -37,3 +37,6 @@
 [12步30分钟](https://github.com/sorrycc/blog/issues/18)
 
 [dva2.0](https://github.com/sorrycc/blog/issues/48)
+
+### 5. lodash
+[lodash中文网](http://www.css88.com/doc/lodash/)
