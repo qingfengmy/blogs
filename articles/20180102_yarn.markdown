@@ -1,0 +1,32 @@
+### 1. 安装
+```
+// mac
+brew update
+brew 
+```
+brew是homebrew的命令简写。
+
+### 2. 初始化
+```
+yarn init
+```
+### 3. 安装
+```
+yarn add webpack
+```
+### 4. yarn.lock
+
+### 5. 更新
+```
+yarn upgrate webpack
+```
+### 6. 列表
+```
+yarn cache ls
+```
+### 7. 国内镜像
+```
+yarn config set registry https://registry.npm.taobao.org
+```
+### 8. yarn官网
+https://yarnpkg.com/zh-Hans/
