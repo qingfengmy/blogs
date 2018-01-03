@@ -42,3 +42,6 @@
 
 ### 5. lodash
 [lodash中文网](http://www.css88.com/doc/lodash/)
+
+### 6. 最佳实践
+[【原】雅虎前端优化的35条军规](https://www.cnblogs.com/xianyulaodi/p/5755079.html)
