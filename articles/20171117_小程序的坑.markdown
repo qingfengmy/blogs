@@ -44,6 +44,50 @@ handleTap(e){
 
 > 其他：properties的字段名用驼峰如myName，wxml中组件props传值用my-name，setData也用驼峰。
 
+### 8. options和JSON.stringify的问题
+```
+// 第一个页面
+const data = {name:'michael',age:15};
+ wx.navigateTo({
+   url: '/pages/second/index?status=1&data='+JSON.stringify(data),
+ })
+```
+```
+// 第二个页面
+onLoad: function (options) {
+    console.log('---options--',options);
+    const status = options.status;
+    const data = JSON.parse(options.data);
+    console.log('--options--',status,data);
+}
+```
+这样是没问题的，最后打印的是
+```
+--options-- 1 {name: "michael", age: 15}
+```
+
+但如果name中有`&`的符号，就会出错，本质原因是`&`出现在了url的query中。
+```
+// 第一个页面
+const data = { name: 'a&b', age: 15 };
+wx.navigateTo({
+  url: '/pages/services/order_create/index?status=1&data=' + JSON.stringify(data),
+})
+```
+```
+// 第二个页面 同上
+```
+结果报错，options中的对象就已经错了，如下：
+```
+{status: "1", data: "{"name":"a", b","age":15}: "undefined"}
+```
+解决这个问题，就需要使用url编码。js的url编解码如下：
+```
+// 编码
+encodeURIComponent(JSON.stringify(obj));
+// 解码
+return JSON.parse(decodeURIComponent(str));
+```
 
 
 ### n. [微信小程序常见FAQ](https://developers.weixin.qq.com/blogdetail?action=get_post_info&lang=zh_CN&token=&docid=2fcdb7794d48c59f7624f53e94d0ae22)
