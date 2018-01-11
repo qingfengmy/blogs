@@ -88,6 +88,10 @@ encodeURIComponent(JSON.stringify(obj));
 // 解码
 return JSON.parse(decodeURIComponent(str));
 ```
+### 9. 苹果手机video播放视频卡顿绿屏问题
+官方回答：加个```custom-cache="{{false}}"```属性，但文档中没有该属性。
+
+参考地址：https://developers.weixin.qq.com/search?action=list&t=search/index&search_type=1&key=custom-cache&token=&lang=zh_CN
 
 
 ### n. [微信小程序常见FAQ](https://developers.weixin.qq.com/blogdetail?action=get_post_info&lang=zh_CN&token=&docid=2fcdb7794d48c59f7624f53e94d0ae22)
