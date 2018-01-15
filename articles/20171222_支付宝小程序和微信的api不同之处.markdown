@@ -1,0 +1,21 @@
+### 1. 支付宝小程序template中只能有一个view
+下面的代码在支付宝中会报错，在微信中不会
+```
+<template name="tem">
+  <view>1</view>
+  <view>2</view>
+</template>
+```
+### 2. getStorageSync
+微信中
+```
+const name = wx.getStorageSync('name');
+console.log(name);
+```
+支付宝中
+```
+const name = my.getStorageSync({key:'name'}).data;
+console.log(name);
+```
+### 3. picker
+支付宝的picker组件只有单选，无法级联操作。
