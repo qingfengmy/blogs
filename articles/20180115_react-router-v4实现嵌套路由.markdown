@@ -101,7 +101,7 @@ react-router-4.0中的路由实现了组件化，可以配置在dom中。
 ### exact属性
 exact是`准确`的意思，如果pathname配置的是'/',有exact`/home`则匹配不上，必须完全匹配'/'才行。4.0中用于实现3.0的ReactRoute。
 ### location,match,history
-图片
+![image](https://github.com/qingfengmy/blogs/raw/master/sources/20180115/0.png)
 ### 参考文章
 [reactjs官网](https://reactjs.org/docs/hello-world.html)
 [react-router官网](https://reacttraining.com/react-router/web/example/basic)
