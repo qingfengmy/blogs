@@ -1,4 +1,4 @@
-### 3.0的嵌套路由实现
+### 1. 3.0的嵌套路由实现
 route和this.props.children实现
 ```
 <Route path="/" component="app">
@@ -22,7 +22,7 @@ const app = ({children})=>{
   );
 }
 ```
-### 4.0的嵌套实现
+### 2. 4.0的嵌套实现
 ```
 // router.js
 import React from 'react';
@@ -98,11 +98,45 @@ const repos = () => {
 export default repos;
 ```
 react-router-4.0中的路由实现了组件化，可以配置在dom中。
-### exact属性
+### 3. exact属性
 exact是`准确`的意思，如果pathname配置的是'/',有exact`/home`则匹配不上，必须完全匹配'/'才行。4.0中用于实现3.0的ReactRoute。
-### location,match,history
+### 4. location,match,history
 ![image](https://github.com/qingfengmy/blogs/raw/master/sources/20180115/0.png)
-### 参考文章
+
+### 5. 动态路由
+```
+// router.js
+function RouterConfig({ history, app }) {
+  console.log('app', app)
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route path="/" component={App} app={app} />
+      </Switch>
+    </Router>
+  );
+}
+```
+```
+import dynamic from 'dva/dynamic'
+<Route path="/home" exact component={dynamic({
+  app,
+  component: () => import('./IndexPage')
+})} />
+<Route path="/about" exact component={dynamic({
+  app,
+  component: () => import('./about')
+})} />
+```
+
+注意：没用到的不要显性的import，如
+```
+import IndexPage from './indexpage'
+import About from './about'
+```
+虽然这两个没有用到，但build时最终只会出现一个包。把这两行删除，则打包会出现三个包：`index.js,0.async.js,1.async.js`
+
+### 6. 参考文章
 [reactjs官网](https://reactjs.org/docs/hello-world.html)
 [react-router官网](https://reacttraining.com/react-router/web/example/basic)
 [React Router--React Router4](https://www.jianshu.com/p/9ffeb2ee4f38)
