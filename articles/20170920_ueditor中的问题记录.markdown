@@ -79,3 +79,23 @@ console.log(result);// aaabbb
 ```
 <input id="videoUrl" type="text" readonly="readonly">
 ```
+### 8. 字数限制
+```
+// 配置
+window.UE.getEditor('content', {
+    toolbars: toolbars,
+    lang: "zh-cn",
+    maximumWords: 20000,
+  })
+```
+```
+// 获取字数
+getContentLength(id) {
+  let editor = createEditor(id);
+  let length = 0;
+  if(editor) {
+    length = editor.getContentLength(true);
+  }
+  return length;
+}
+```
