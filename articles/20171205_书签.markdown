@@ -43,5 +43,12 @@
 ### 5. lodash
 [lodash中文网](http://www.css88.com/doc/lodash/)
 
-### 6. 最佳实践
+### 6. css
+[CSS3实现18种Loading效果](https://www.jianshu.com/p/6ac3e3e12d61)
+
+[css - 收藏集 - 掘金](https://www.jianshu.com/p/6efa84ca8302)
+
+[理解CSS命名规范--BEM](https://mrzhang123.github.io/2017/04/05/BEM/)
+
+### n. 最佳实践
 [【原】雅虎前端优化的35条军规](https://www.cnblogs.com/xianyulaodi/p/5755079.html)
