@@ -1,0 +1,110 @@
+### 0. 一个原则
+```
+this指的是，调用函数的那个对象。
+```
+
+### 1. 全局 & 调用普通函数
+全局的时候this就是window.调用普通函数（非new出的对象调用）this也是window.
+
+### 2. 构造函数
+函数被作为构造函数时（new关键字），其中的this就是它即将new出的对象。
+```
+function Foo(x){
+  this.x = x;
+  console.log(this);    //Foo {x:8}   Foo {x:9}
+}
+new Foo(8);
+new Foo(9);
+```
+
+### 3. 对象的函数
+对象的函数中的this当然是该对象。
+```
+var obj = {
+  x: 10,
+  foo: function () {
+    console.log(this);        //{x: 10, foo: ƒ}
+  }
+};
+obj.foo();
+```
+需要注意的是，对象的函数中的函数，其中的this要看他的调用者是谁
+```
+var obj = {
+  x: 10,
+  foo: function () {
+    function f(){
+      console.log(this);      //Window
+    }
+    f();// 调用者是window
+  }
+}
+obj.foo();
+```
+
+### 4. 构造函数 prototype 属性
+```
+function Foo(){
+    this.x = 10;
+}
+Foo.prototype.getX = function () {
+    console.log(this);        //Foo {x: 10, getX: function}
+}
+var foo = new Foo();
+foo.getX();
+```
+在 Foo.prototype.getX 函数中，this 指向的 foo 对象。不仅仅如此，即便是在整个原型链中，this 代表的也是当前对象的值。
+
+### 5. 函数用 call、apply或者 bind 调用。
+```
+var obj = {
+    x: 10
+}
+function foo(){
+    console.log(this);     //{x: 10}
+}
+foo.call(obj);
+foo.apply(obj);
+foo.bind(obj)();
+```
+当一个函数被 call、apply 或者 bind 调用时，this 的值就取传入的对象的值。
+
+### 6. 箭头函数中的 this
+箭头函数内部的 this 是词法作用域，this 总是指向词法作用域，也就是外层调用者 obj
+```
+var obj = {
+    x: 10,
+    foo: function() {
+        var fn = () => {
+            return () => {
+                return () => {
+                    console.log(this);      //Object {x: 10}
+                }
+            }
+        }
+        fn()()();
+    }
+}
+obj.foo();
+```
+由于 this 在箭头函数中已经按照词法作用域绑定了，所以，用 call()或者 apply()调用箭头函数时，无法对 this 进行绑定，即传入的第一个参数被忽略。
+```
+var obj = {
+    x: 10,
+    foo: function() {
+        var fn = () => {
+            return () => {
+                return () => {
+                    console.log(this);    // Object {x: 10}
+                    console.log(this.x);  //10
+                }
+            }
+        }
+        fn.bind({x: 14})()()();
+        fn.call({x: 14})()();
+    }
+}
+obj.foo();
+```
+### 7. 参考文章
+[全面解析 Javascript - this](https://zhuanlan.zhihu.com/p/25294187)
