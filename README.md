@@ -1,7 +1,5 @@
 ## 人生没有更好的一条路
-![image](https://github.com/qingfengmy/blogs/raw/master/sources/time.jpg)
-
-[https://qingfengmy.github.io](https://qingfengmy.github.io/)
+[![image](https://github.com/qingfengmy/blogs/raw/master/sources/time.jpg)](https://qingfengmy.github.io/)
 
 ### 置顶
 * [书签](https://github.com/qingfengmy/blogs/issues/3)
