@@ -9,6 +9,7 @@
 ### 2018-03
 * [js正则](https://github.com/qingfengmy/blogs/issues/7)
 * [0.1+0.2=0.30000000000000004 的问题](https://github.com/qingfengmy/blogs/issues/8)
+* [==和===的区别](https://github.com/qingfengmy/blogs/issues/9)
 ### 2018-02
 * [node中的定时器问题](https://github.com/qingfengmy/blogs/issues/2) 
 * [js中的this问题](https://github.com/qingfengmy/blogs/issues/1)
