@@ -30,3 +30,10 @@ yarn config set registry https://registry.npm.taobao.org
 ```
 ### 8. yarn官网
 https://yarnpkg.com/zh-Hans/
+
+https://zhuanlan.zhihu.com/p/23493436?refer=FrontendMagazine
+
+### 9. yarn的优势
+ facebook的官网说yarn是为了弥补npm的不足，主要是依赖包的版本问题，第一次安装的依赖和再次安装的依赖可能版本不同，造成bug隐患。yarn解决问题的方式是提供了yarn.lock文件，在第一次install的时候，会把依赖包的版本信息存起来，再次安装会按照版本信息安装。
+ 
+ 需要注意的是，yarn只是一个cli工具，依赖的仓库还是之前的仓库。
