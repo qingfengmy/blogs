@@ -24,7 +24,6 @@
 * [mac问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171223_mac%E9%97%AE%E9%A2%98.markdown)
 ### 2017-11
 * [js的数组函数](https://github.com/qingfengmy/blogs/blob/master/articles/20171116_js%E7%9A%84%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0.markdown)
-* [js的Hank技能](https://github.com/qingfengmy/blogs/blob/master/articles/20171122_js%E7%9A%84Hank%E6%8A%80%E8%83%BD.markdown)
 * [requiresJS和AMD规范](https://github.com/qingfengmy/blogs/blob/master/articles/20171128_requiresJS%E5%92%8CAMD%E8%A7%84%E8%8C%83.markdown)
 ### 2017-10
 * [fiddler抓取手机http和https请求](https://github.com/qingfengmy/blogs/blob/master/articles/20171013_fiddler%E6%8A%93%E5%8F%96%E6%89%8B%E6%9C%BAhttp%E5%92%8Chttps%E8%AF%B7%E6%B1%82.markdown)
