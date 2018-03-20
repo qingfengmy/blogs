@@ -33,30 +33,21 @@ switch(b){
 }
 ```
 输出`等于`
-### 其他
+### 第三段代码
 ```
-console.log(true && 44);// 44
-console.log(true && 'hello');// hello
-console.log(false && 44);// false
-console.log(false && 'world');// false
-console.log(11 && 44);// 44
-console.log(true & 44);// 0
-console.log(false & 44);// 0
-console.log(11 & 44)// 8
-```
-更需要注意的是：
-```
-console.log(44 && true);// 输出true
-```
-其实双与符号相当于一个表达式，前者是判断条件，后者是执行的代码。react中好多这样写法
-```
-<div>
-{
-  list && list.map(item=>(<span>{item}</span>))
+const b = 33;
+switch(true){
+  case b>30:
+    console.log('大于');
+    break;
+  case b<30:
+    console.log('小于')
+    break;
+  default:
+    console.log('等于')
 }
-</div>
 ```
-实际返回的是后面的span数组，前一个list只是判断条件。
+输出`大于`；一般写法是switch写变量，case写常量；如果switch写常量，case写变量不就可以支持变量了。
 ### switch case 的不长注意问题
 ```
 switch (10) {
