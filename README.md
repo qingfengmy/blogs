@@ -12,6 +12,7 @@
 * [==和===的区别](https://github.com/qingfengmy/blogs/issues/9)
 * [|| 和 &&](https://github.com/qingfengmy/blogs/issues/10)
 * [js判断对象的数据类型](https://github.com/qingfengmy/blogs/issues/11)
+* [https://github.com/qingfengmy/blogs/issues/13](https://github.com/qingfengmy/blogs/issues/13)
 ### 2018-02
 * [node中的定时器问题](https://github.com/qingfengmy/blogs/issues/2) 
 * [js中的this问题](https://github.com/qingfengmy/blogs/issues/1)
