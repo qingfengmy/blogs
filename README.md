@@ -6,6 +6,8 @@
 * [微信小程序](https://github.com/qingfengmy/blogs/issues/5)
 * [前端tip](https://github.com/qingfengmy/blogs/issues/6)
 
+### 2018-04
+* [富文本编辑器基本原理](https://github.com/qingfengmy/blogs/issues/17)
 ### 2018-03
 * [js正则](https://github.com/qingfengmy/blogs/issues/7)
 * [0.1+0.2=0.30000000000000004 的问题](https://github.com/qingfengmy/blogs/issues/8)
