@@ -8,6 +8,7 @@
 
 ### 2018-05
 * [sublime的日常问题](https://github.com/qingfengmy/blogs/issues/26)
+* [大O表示法](https://github.com/qingfengmy/blogs/issues/27)
 ### 2018-04
 * [富文本编辑器基本原理](https://github.com/qingfengmy/blogs/issues/17)
 * [css中的属性动画transition](https://github.com/qingfengmy/blogs/issues/20)
