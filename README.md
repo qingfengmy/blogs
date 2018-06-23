@@ -8,6 +8,7 @@
 
 ### 2018-06
 * [尾递归](https://github.com/qingfengmy/blogs/issues/29)
+* [函数式编程之compose函数的实现（一）](https://github.com/qingfengmy/blogs/issues/31)
 ### 2018-05
 * [sublime的日常问题](https://github.com/qingfengmy/blogs/issues/26)
 * [大O表示法](https://github.com/qingfengmy/blogs/issues/27)
