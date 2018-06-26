@@ -38,7 +38,7 @@ Tools->Options->Action->Export Root Certificate to DeskTop
 ```
 ```
 // 方式2
-手机设置代理后，浏览器访问http://ip地址:8888，然后点击下载证书
+手机设置代理后，浏览器访问http://ip地址:8888，然后点击下载证书，点击安装或者到文件管理器中点击安装
 ```
 #### 2.5 访问https
 https页面有个select，其四种值的意义如下：
