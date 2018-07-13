@@ -6,6 +6,9 @@
 * [微信小程序](https://github.com/qingfengmy/blogs/issues/5)
 * [前端tip](https://github.com/qingfengmy/blogs/issues/6)
 
+### 2018-07
+* [value1+value2](https://github.com/qingfengmy/blogs/issues/38)
+* [理解redux的middleware](https://github.com/qingfengmy/blogs/issues/39)
 ### 2018-06
 * [尾递归](https://github.com/qingfengmy/blogs/issues/29)
 * [函数式编程之compose函数的实现（一）](https://github.com/qingfengmy/blogs/issues/31)
