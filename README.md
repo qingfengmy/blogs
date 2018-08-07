@@ -41,7 +41,7 @@
 * [js的模块构建方式](https://github.com/qingfengmy/blogs/blob/master/articles/20171223_js%E7%9A%84%E6%A8%A1%E5%9D%97%E6%9E%84%E5%BB%BA%E6%96%B9%E5%BC%8F.markdown)
 * [mac问题](https://github.com/qingfengmy/blogs/blob/master/articles/20171223_mac%E9%97%AE%E9%A2%98.markdown)
 ### 2017-11
-* [js的数组函数](https://github.com/qingfengmy/blogs/blob/master/articles/20171116_js%E7%9A%84%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0.markdown)
+* [js的数组函数](https://github.com/qingfengmy/blogs/issues/43)
 * [requiresJS和AMD规范](https://github.com/qingfengmy/blogs/blob/master/articles/20171128_requiresJS%E5%92%8CAMD%E8%A7%84%E8%8C%83.markdown)
 ### 2017-10
 * [fiddler抓取手机http和https请求](https://github.com/qingfengmy/blogs/blob/master/articles/20171013_fiddler%E6%8A%93%E5%8F%96%E6%89%8B%E6%9C%BAhttp%E5%92%8Chttps%E8%AF%B7%E6%B1%82.markdown)
